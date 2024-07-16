@@ -1,3 +1,7 @@
+import random
+import codecs
+
+
 word = None
 def Yakubovich_game():
     global word
@@ -64,12 +68,16 @@ def lvl_game():
     level = input('Light(л) / Hard(х) ')
     if level == 'л':
         print(' Вы выбрали лёгкий уровень ')
-        a = input(' Введите слово от 4 до 10 букв: ')
-        word = a
+        with codecs.open('words-light.txt', 'r', 'utf-8') as f:
+            word = random.choice(f.readlines())
+            word = word.replace('\n', '')
+            word = word.replace('\r', '')
     elif level == 'х':
         print(' Вы выбрали сложный уровень ')
-        b = input(' Введите слово от 10 букв: ')
-        word = b
+        with codecs.open('words-hard.txt.', 'r', 'utf-8') as f:
+            word = random.choice(f.readlines())
+            word = word.replace('\n', '')
+            word = word.replace('\r', '')
     else:  
         print(' Некорректный ввод ')       
         
