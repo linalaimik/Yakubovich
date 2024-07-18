@@ -16,6 +16,7 @@ def Yakubovich_game():
     print( '@'*19)
     print('😈Игра начинается😈 ')
     print( '@'*19)
+    print()
     while '_' in Yakubovich_time:
         for bukovka in Yakubovich_time:
             print(bukovka, end ='')
@@ -37,10 +38,11 @@ def Yakubovich_game():
         attempts +=1
         if len(lives) == 0:
             print(' Жизней не осталось, игра окончена =( ')
-            print(f' Было загадано слово {word} ')
+            print(f' Было загадано слово:  {word} ')
             print(' Вы расстроили одного Якубовича =( ')
             break
         if '_' not in Yakubovich_time:
+            print(f' Вы угадали слово:  {word} ')
             print(' Поздравляем с победой!!! ')
             print(' Количество попыток - ', attempts )
             print(' Якубович Вами гордится! ')
@@ -62,24 +64,27 @@ def after_game():
  
 def lvl_game():
     global word
-    print('Выберите уровень сожности:')
-    print('* Light : от 4 до 10 букв в слове *')
-    print('@ Hard : 10 и более букв в слове @')
-    level = input('Light(л) / Hard(х) ')
-    if level == 'л':
-        print(' Вы выбрали лёгкий уровень ')
-        with codecs.open('words-light.txt', 'r', 'utf-8') as f:
-            word = random.choice(f.readlines())
-            word = word.replace('\n', '')
-            word = word.replace('\r', '')
-    elif level == 'х':
-        print(' Вы выбрали сложный уровень ')
-        with codecs.open('words-hard.txt.', 'r', 'utf-8') as f:
-            word = random.choice(f.readlines())
-            word = word.replace('\n', '')
-            word = word.replace('\r', '')
-    else:  
-        print(' Некорректный ввод ')       
+    while True:
+        print('Выберите уровень сожности:')
+        print('* Light : от 4 до 10 букв в слове *')
+        print('@ Hard : 10 и более букв в слове @')
+        level = input('Light(л) / Hard(х) ')
+        if level == 'л':
+            print(' Вы выбрали лёгкий уровень ')
+            with codecs.open('words-light.txt', 'r', 'utf-8') as f:
+                word = random.choice(f.readlines())
+                word = word.replace('\n', '')
+                word = word.replace('\r', '')
+                break
+        elif level == 'х':
+            print(' Вы выбрали сложный уровень ')
+            with codecs.open('words-hard.txt.', 'r', 'utf-8') as f:
+                word = random.choice(f.readlines())
+                word = word.replace('\n', '')
+                word = word.replace('\r', '')
+                break
+        else:
+            print(' Некорректный ввод ')
         
     
 print('#'*33)
