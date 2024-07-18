@@ -48,9 +48,9 @@ def Yakubovich_game():
             print(' Якубович Вами гордится! ')
             
 
-def after_game():  
-    print('Хотите ещё один раунд?')  
-    while True:  
+def after_game():
+    while True:
+        print('Хотите ещё один раунд?')
         choice = input('Да(д)/Нет(н)')  
         if choice == 'д':  
             Yakubovich_game()  
